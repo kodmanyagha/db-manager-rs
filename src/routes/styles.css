@@ -1,0 +1,8 @@
+@import '@fontsource/fira-mono';
+@import 'bootstrap';
+@import 'svelte-material-ui/bare.css';
+
+@import '@fontsource/roboto-mono';
+@import '@fontsource/roboto-mono/400.css';
+@import '@fontsource/roboto-mono/400-italic.css';
+@import 'material-icons/iconfont/material-icons.css';
