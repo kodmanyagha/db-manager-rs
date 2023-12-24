@@ -13,4 +13,4 @@ I used Rust, Typescript, Tauri and Sveltekit in this project.
 ### Touch
 
 You can connect to me from email:
-`[My Github Username]@gmail.com`
+`emir@rust.tc`
