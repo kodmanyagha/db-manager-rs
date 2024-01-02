@@ -6,11 +6,14 @@ I created a desktop app which doesn't have these kind of lacks.
 
 ### Tech Stack
 
-In first, I <3 Rust. Rust is best language I have ever seen. I think if Rust invented
-before C/C++, no one would use C, Linux kernel would have been developed with Rust.
 I used Rust, Typescript, Tauri and Sveltekit in this project.
 
-### Touch
+### Why Rust?
+
+Because I <3 Rust. Rust is best language I have ever seen. I think if Rust invented
+before C/C++, no one would use C, Linux kernel would have been developed with Rust.
+
+### Connect
 
 You can connect to me from email:
 `emir@rust.tc`

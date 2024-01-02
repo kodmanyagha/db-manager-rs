@@ -1,10 +1,18 @@
 <script lang="ts">
+  import { Button } from '@sveltestrap/sveltestrap';
   import { spring } from 'svelte/motion';
-
-  let count = 0;
+  import { counter } from '../store/store';
 
   const displayed_count = spring();
-  $: displayed_count.set(count);
+
+  /* We can subscribe for changes in state, but better way is using dollar syntax.
+  We can auto subscribe with this way. */
+  //let count = 0;
+  //counter.subscribe((val) => (count = val));
+  //$: displayed_count.set(count);
+
+  // Use dollar syntax for subscribing to counter state.
+  $: displayed_count.set($counter);
   $: offset = modulo($displayed_count, 1);
 
   function modulo(n: number, m: number) {
@@ -14,11 +22,14 @@
 </script>
 
 <div class="counter">
-  <button on:click={() => (count -= 1)} aria-label="Decrease the counter by one">
-    <svg aria-hidden="true" viewBox="0 0 1 1">
-      <path d="M0,0.5 L1,0.5" />
-    </svg>
-  </button>
+  <Button
+    type="button"
+    color="primary"
+    on:click={() => counter.update((prev) => prev - 1)}
+    aria-label="Decrease the counter by one"
+  >
+    <i class="fa-solid fa-minus"></i>
+  </Button>
 
   <div class="counter-viewport">
     <div class="counter-digits" style="transform: translate(0, {100 * offset}%)">
@@ -27,12 +38,18 @@
     </div>
   </div>
 
-  <button on:click={() => (count += 1)} aria-label="Increase the counter by one">
-    <svg aria-hidden="true" viewBox="0 0 1 1">
-      <path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" />
-    </svg>
-  </button>
+  <Button
+    type="button"
+    color="primary"
+    on:click={() => counter.update((prev) => prev + 1)}
+    aria-label="Increase the counter by one"
+  >
+    <i class="fa-solid fa-plus"></i>
+  </Button>
 </div>
+<Button on:click={() => counter.set(0)} type="button" color="success" outline class="w-100 btn-lg">
+  Reset
+</Button>
 
 <style>
   .counter {
@@ -40,33 +57,6 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     margin: 1rem 0;
-  }
-
-  .counter button {
-    width: 2em;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    background-color: transparent;
-    touch-action: manipulation;
-    font-size: 2rem;
-  }
-
-  .counter button:hover {
-    background-color: var(--color-bg-1);
-  }
-
-  svg {
-    width: 25%;
-    height: 25%;
-  }
-
-  path {
-    vector-effect: non-scaling-stroke;
-    stroke-width: 2px;
-    stroke: #444;
   }
 
   .counter-viewport {

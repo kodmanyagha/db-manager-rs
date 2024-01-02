@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Button, { Icon, Label } from '@smui/button';
   import { invoke } from '@tauri-apps/api';
 
   let result = '';
@@ -33,10 +32,7 @@
   <h1>About this app</h1>
 
   <div>
-    <Button color="primary" variant="unelevated" on:click={example_json}>
-      <Icon class="material-icons">favorite</Icon>
-      <Label>Example Json</Label>
-    </Button>
+    <button class="btn btn-primary" on:click={example_json}> Click Me </button>
     <p>Result: {result}</p>
   </div>
 

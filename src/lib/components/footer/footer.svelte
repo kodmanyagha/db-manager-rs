@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import bsLogo from '$lib/images/bootstrap-logo.svg';
 </script>
 

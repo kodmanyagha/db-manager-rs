@@ -1,4 +1,4 @@
-use crate::db::mysql::connection::mysql_connect;
+use crate::{db::mysql::connection::mysql_connect, state::app_state::AppState};
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
@@ -17,9 +17,10 @@ pub async fn invoke_handler(
     func: String,
     data: String,
     window: tauri::Window,
-    app_handle: tauri::AppHandle,
-) -> Result<impl Serialize, String> {
-    let result = _invoke_handler(func, data, window, app_handle).await;
+    app: tauri::AppHandle,
+    state: tauri::State<'_, AppState>,
+) -> Result<String, String> {
+    let result = _invoke_handler(func, data, window, app, state).await;
 
     match result {
         Ok(data) => Ok(data.to_string()),
@@ -31,10 +32,11 @@ async fn _invoke_handler(
     func: String,
     data: String,
     window: tauri::Window,
-    #[allow(unused_variables)] app_handle: tauri::AppHandle,
+    app: tauri::AppHandle,
+    state: tauri::State<'_, AppState>,
 ) -> anyhow::Result<String> {
     match func.as_str() {
-        "mysql_connect" => mysql_connect(data, window).await,
+        "mysql_connect" => mysql_connect(data, window, app, state).await,
         "example_json" => example_json(data).await,
         _ => Err(InvokeHandlerError::FuncNotFound.into()),
     }

@@ -1,3 +1,8 @@
+import type { SvelteComponentTyped } from 'svelte';
+
+const x: SvelteComponentTyped;
+console.log(x);
+
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 declare global {

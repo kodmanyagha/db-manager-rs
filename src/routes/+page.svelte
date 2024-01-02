@@ -1,7 +1,6 @@
-<script>
-  import Greet from '$lib/greet.svelte';
-  import MysqlConnect from '$lib/mysqlConnect.svelte';
-  import Button, { Label } from '@smui/button';
+<script lang="ts">
+  import MysqlConnect from '$lib/mysql-connect.svelte';
+  import { Button } from '@sveltestrap/sveltestrap';
   import Counter from './Counter.svelte';
 </script>
 
@@ -20,10 +19,15 @@
         <h1 class="card-title pricing-card-title">
           $0<small class="text-body-secondary fw-light">/mo</small>
         </h1>
-        <p>
-          <Greet />
-        </p>
-        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Greetings</button>
+        <p>Hello World, how's going?</p>
+
+        <Button type="button" color="primary" class="w-100 btn-lg">
+          <i class="fa-solid fa-house"></i>
+          <br />
+          This is sveltestrap button!!!
+          <br />
+          This is fine.
+        </Button>
       </div>
     </div>
   </div>
@@ -37,10 +41,7 @@
         <h1 class="card-title pricing-card-title">
           $0<small class="text-body-secondary fw-light">/mo</small>
         </h1>
-        <p>
-          <Counter />
-        </p>
-        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Counter</button>
+        <Counter />
       </div>
     </div>
   </div>
@@ -57,9 +58,9 @@
         <p>
           <MysqlConnect />
 
-          <Button class="myClass"><Label>This button has a Class</Label></Button>
+          <button class="btn btn-primary"> This button has a Class </button>
         </p>
-        <a href="mui-example/accordion" class="w-100 btn btn-lg btn-outline-primary">Counter</a>
+        <a href="mui-example/treeview" class="w-100 btn btn-lg btn-primary">Tree View</a>
       </div>
     </div>
   </div>
